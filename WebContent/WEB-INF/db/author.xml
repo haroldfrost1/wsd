@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <authors>
+        <author>
+            <id>1</id>
+            <name>lee</name>
+            <password>lee</password>
+        </author>
+        <author>
+            <id>2</id>
+            <name>kate</name>
+            <password>kate</password>
+        </author>
+    </authors>
+</root>

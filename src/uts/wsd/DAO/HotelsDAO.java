@@ -14,6 +14,20 @@ public class HotelsDAO {
 	private Hotels hotels;
 	private String filePath;
 	
+	/**
+	 * @return the hotels
+	 */
+	public Hotels getHotels() {
+		return hotels;
+	}
+
+	/**
+	 * @return the filePath
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
+
 	public HotelsDAO() {
 		// initialize filePath to 
 		// "hotels.xml"

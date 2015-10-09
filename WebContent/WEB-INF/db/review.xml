@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <reviews>
+        <review>
+            <authorId>1</authorId>
+            <date>2015-09-27T14:14:30.613+10:00</date>
+            <headline>headline 1</headline>
+            <description>description 1</description>            
+            <hotelId>1</hotelId>
+            <id>1</id>
+            <rating>4</rating>
+        </review>
+        <review>
+            <authorId>1</authorId>
+            <date>2015-09-27T14:14:30.618+10:00</date>
+            <headline>headline 2</headline>
+            <description>description 2</description>            
+            <hotelId>1</hotelId>
+            <id>2</id>
+            <rating>3</rating>
+        </review>
+    </reviews>
+</root>
