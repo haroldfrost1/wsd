@@ -17,7 +17,6 @@
 					}
 					.hotel{
 					width:480px;
-					float: left;
 					padding: 28px;
 					}
 					img{
@@ -101,8 +100,18 @@
 				</table>
 			</div>
 		</div>
+	</xsl:template>
+	
+	<xsl:template match="reviewlist">
 		<div>
 			<h1>Reviews</h1>
+			<ul>
+				<xsl:apply-templates/>
+			</ul>
 		</div>
+	</xsl:template>
+	
+	<xsl:template match="review">
+		<li><xsl:value-of select="headline"/></li>
 	</xsl:template>
 </xsl:stylesheet>

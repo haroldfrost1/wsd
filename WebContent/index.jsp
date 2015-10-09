@@ -12,5 +12,6 @@
 	</hotellist>
 	<footer>
 		<!-- display footer here  -->
+		<!-- first update -->
 	</footer>
 </page>
