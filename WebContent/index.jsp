@@ -6,23 +6,23 @@
 	//retrieve "real" path
 	//since the jsp page is running in a different directory from the classes
 	//So you can't hard-code the filePath in the class
-	String filePath = application.getRealPath("WEB-INF/db/hotels.xml");
+	String hotelsFilePath = application.getRealPath("WEB-INF/db/hotels.xml");
 %>
 
 <!-- use HotelsDAO bean and read the hotels from filePath -->
 <jsp:useBean id="hotelsApp" class="uts.wsd.DAO.HotelsDAO" scope="application">
-	<jsp:setProperty name="hotelsApp" property="filePath" value="<%=filePath%>" />
+	<jsp:setProperty name="hotelsApp" property="filePath" value="<%=hotelsFilePath%>" />
 </jsp:useBean>
   
 <page title="The Hotels">
 	<header>
 		<!-- display header here  -->
 	</header>
-	<hotellist>
+	<hotel-list>
 		<% for (Hotel hotel: hotelsApp.getHotels()){%>
 		<hotel id="<%= hotel.getId()%>" name="<%= hotel.getName()%>" city="<%= hotel.getCity()%>" country="<%= hotel.getCountry()%>"/>
 		<% } %>
-	</hotellist>
+	</hotel-list>
 	<footer>
 		<!-- display footer here  -->
 	</footer>

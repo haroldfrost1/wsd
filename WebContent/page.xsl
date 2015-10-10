@@ -44,18 +44,15 @@
 		</div>
 	</xsl:template>
 
-	<xsl:template match="hotellist">
+	<xsl:template match="hotel-list">
 		<xsl:apply-templates />
 	</xsl:template>
 
 	<xsl:template match="hotel">
 		<div class="hotel">
-			<a href="hotel.jsp?{id}">
+			<a href="hotel.jsp?id={@id}">
 				<div class="hotelname">
 					<xsl:value-of select="@name" />
-				</div>
-				<div>
-					<img src="img/1.jpg" />
 				</div>
 				<div>
 					<span>
@@ -69,12 +66,9 @@
 	<xsl:template match="hotel-detail">
 		<div>
 			<div>
-				<img src="img/1.jpg" />
-			</div>
-			<div>
 				<table>
 					<tr>
-						<td colspan="2">Four Season</td>
+						<td colspan="2"><xsl:value-of select="@name" /></td>
 					</tr>
 					<tr>
 						<td><xsl:value-of select="@city" />,	<xsl:value-of select="@country" /></td>
@@ -102,7 +96,7 @@
 		</div>
 	</xsl:template>
 	
-	<xsl:template match="reviewlist">
+	<xsl:template match="review-list">
 		<div>
 			<h1>Reviews</h1>
 			<ul>
@@ -112,6 +106,6 @@
 	</xsl:template>
 	
 	<xsl:template match="review">
-		<li><xsl:value-of select="headline"/></li>
+		<li><xsl:value-of select="@headline"/></li>
 	</xsl:template>
 </xsl:stylesheet>

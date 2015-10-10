@@ -9,7 +9,7 @@ import javax.xml.bind.*;
 
 import uts.wsd.domain.*;
 
-public class AuthorsDAO {
+public class AuthorsDAO implements Serializable{
 	/*
 	 * Data Access Object class for
 	 * Authors

@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hotels>
 	<hotel>
-		<city>sydney</city>
-		<country>AU</country>
+		<city>Melbourne</city>
+		<country>Australia</country>
 		<id>1</id>
-		<name>hotel 1</name>
+		<name>Pansione Hotel Melbourne</name>
+		<address>16 Spam St, Melbourne, Victoria 3000, Australia</address>
+		<email>book@pansione.fake.au</email>
+		<telephone>1800-687-236</telephone>
 	</hotel>
 	<hotel>
-		<city>sydney</city>
-		<country>AU</country>
-		<id>1</id>
-		<name>hotel 1</name>
+		<city>New York</city>
+		<country>USA</country>
+		<id>2</id>
+		<name>Hotel Pennshyvannas</name>
+		<address>401 Fake Avenue, New York, NY 10001, USA</address>
+		<email>pennshyvannas@fake.com</email>
+		<telephone>+1(052)8888888</telephone>
 	</hotel>
 	<hotel>
-		<city>sydney</city>
-		<country>AU</country>
-		<id>1</id>
-		<name>hotel 1</name>
+		<city>London</city>
+		<country>England</country>
+		<id>3</id>
+		<name>The Stran Palace</name>
+		<address>372 Stran, London, WC2R 0JJ, United Kingdom</address>
+		<email>reservations@stranpalacehotel.co.fake</email>
+		<telephone>+44 207379 ABCD</telephone>
 	</hotel>
 </hotels>
 

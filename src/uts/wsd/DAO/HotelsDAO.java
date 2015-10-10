@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.xml.bind.*;
 import uts.wsd.domain.*;
 
-public class HotelsDAO {
+public class HotelsDAO implements Serializable{
 
 	/*
 	 * Data Access Object class for
@@ -22,6 +22,15 @@ public class HotelsDAO {
 	public ArrayList<Hotel> getHotels() {
 		return hotels.getHotels();
 	}
+	
+	public Hotel getHotelById(int id){
+		for (Hotel hotel: getHotels()){
+			if (hotel.getId() == id){
+				return hotel;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * @return the filePath
@@ -31,7 +40,7 @@ public class HotelsDAO {
 	}
 
 	public HotelsDAO() {
-		// init with setting filePath to "hotels.xml"will not work!!!
+		// init with setting filePath to "hotels.xml" will not work!!!
 		// 
 		
 		//initializing

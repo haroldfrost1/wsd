@@ -1,10 +1,12 @@
 package uts.wsd.DAO;
 
 import java.io.*;
+import java.util.ArrayList;
+
 import javax.xml.bind.*;
 import uts.wsd.domain.*;
 
-public class ReviewsDAO {
+public class ReviewsDAO implements Serializable{
 	
 	/*
 	 * Data Access Object class for
@@ -23,6 +25,10 @@ public class ReviewsDAO {
 		this.reviews = new Reviews();
 		
 		
+	}
+	
+	public ArrayList<Review> getReviews(){
+		return reviews.getReviews();
 	}
 	
 	public void setFilePath(String filePath){
