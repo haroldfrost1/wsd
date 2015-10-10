@@ -1,10 +1,12 @@
 package uts.wsd.domain;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "author")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-public class Author {
+public class Author implements Serializable{
 
 	/*
 	 * Strictly stick to the following xml format
@@ -17,18 +19,19 @@ public class Author {
 	 * </author>
 	 */
 	
-	@XmlElement
+	
 	private int id;
 	
-	@XmlElement
+	
 	private String name;
 	
-	@XmlElement
+	
 	private String password;
 	
-	@XmlElement
+
 	private String email;
 	
+	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -37,6 +40,7 @@ public class Author {
 		this.id = id;
 	}
 
+	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -44,7 +48,8 @@ public class Author {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@XmlElement
 	public String getPassword() {
 		return password;
 	}
@@ -53,6 +58,7 @@ public class Author {
 		this.password = password;
 	}
 
+	@XmlElement
 	public String getEmail() {
 		return email;
 	}

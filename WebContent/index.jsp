@@ -1,17 +1,29 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"
-    pageEncoding="UTF-8"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="page.xsl"?>  
+    pageEncoding="UTF-8" import="uts.wsd.DAO.HotelsDAO" %><?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="page.xsl"?>
+<%@ page import="uts.wsd.domain.Hotel" %>
+<%	
+	//retrieve "real" path
+	//since the jsp page is running in a different directory from the classes
+	//So you can't hard-code the filePath in the class
+	String filePath = application.getRealPath("WEB-INF/db/hotels.xml");
+%>
+
+<!-- use HotelsDAO bean and read the hotels from filePath -->
+<jsp:useBean id="hotelsApp" class="uts.wsd.DAO.HotelsDAO" scope="application">
+	<jsp:setProperty name="hotelsApp" property="filePath" value="<%=filePath%>" />
+</jsp:useBean>
+  
 <page title="The Hotels">
 	<header>
 		<!-- display header here  -->
 	</header>
 	<hotellist>
-		<hotel id="0" name="Four Season" city="Guangzhou" country="China"/>
-		<hotel id="1" name="Four Season" city="Hangzhou" country="China"/>
-		<hotel id="2" name="Four Season" city="Sichuan" country="China"/>
+		<% for (Hotel hotel: hotelsApp.getHotels()){%>
+		<hotel id="<%= hotel.getId()%>" name="<%= hotel.getName()%>" city="<%= hotel.getCity()%>" country="<%= hotel.getCountry()%>"/>
+		<% } %>
 	</hotellist>
 	<footer>
 		<!-- display footer here  -->
-		<!-- first update -->
 	</footer>
 </page>

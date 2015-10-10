@@ -20,15 +20,17 @@ public class AuthorsDAO {
 	private Authors authors;
 	
 	public AuthorsDAO() {
-		// init with setting filePath to
-		// "authors.xml"
-		setFilePath("authors.xml");
+		// init with setting filePath to "authors.xml" will not work!!!
+		// setFilePath("WebContent/WEB-INF/db/authors.xml");
+		// jsp pages will run in a different directory
+		
+		//initialize authors
 		authors = new Authors();
-		readAuthors();
 	}
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+		readAuthors();
 	}
 			
 	public void save(){

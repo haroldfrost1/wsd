@@ -16,21 +16,25 @@ public class ReviewsDAO {
 	
 	
 	public ReviewsDAO() {
-		// init with setting filePath to
-		// "reviews.xml"
-		setFilePath("reviews.xml");
-		readReviews();
+		// init with setting filePath to "reviews.xml" !!!
+		// setFilePath("WebContent/WEB-INF/db/reviews.xml"); NOOOO!!!
+		
+		//initializing
+		this.reviews = new Reviews();
+		
+		
 	}
 	
 	public void setFilePath(String filePath){
 		this.filePath = filePath;
+		readReviews();
 	}
 		
 	public void addReview(Review review){
-		readReviews();
+		//readReviews();
 		
 		//Setting id to the current largest + 1
-		review.setId(reviews.getLargestId() + 1);
+		//review.setId(reviews.getLargestId() + 1);
 		
 		//add & save
 		reviews.addReview(review);
@@ -45,7 +49,7 @@ public class ReviewsDAO {
 	
 	public void save(){
 		try{
-			JAXBContext jc = JAXBContext.newInstance(Authors.class);
+			JAXBContext jc = JAXBContext.newInstance(Reviews.class);
 			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			m.marshal(reviews, new FileOutputStream(filePath));
@@ -65,9 +69,9 @@ public class ReviewsDAO {
 			jc = JAXBContext.newInstance(Reviews.class);
 			Unmarshaller un = jc.createUnmarshaller();
 			
-			// Unmarshall from authors.xml
+			// Unmarshall from reviews.xml
 			FileInputStream fin = new FileInputStream(filePath);
-			reviews = (Reviews)un.unmarshal(fin);
+			this.reviews = (Reviews)un.unmarshal(fin);
 			
 			fin.close();
 		}

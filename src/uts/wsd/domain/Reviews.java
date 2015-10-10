@@ -1,5 +1,6 @@
 package uts.wsd.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.xml.bind.annotation.*;
@@ -7,13 +8,14 @@ import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement(name = "reviews")
-public class Reviews {
+public class Reviews implements Serializable{
 
-	@XmlElement(name = "review")
+	
 	private ArrayList<Review> reviews;
 	
 	private int largestId;
 	
+	@XmlElement(name = "review")
 	public ArrayList<Review> getReviews() {
 		return reviews;
 	}

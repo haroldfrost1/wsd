@@ -9,11 +9,12 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "authors")
 public class Authors implements Serializable {
 
-	@XmlElement(name = "author")
+	
 	private ArrayList<Author> authors;
 	
 	private int largestId;
 	
+	@XmlElement(name = "author")
 	public ArrayList<Author> getAuthors() {
 		return authors;
 	}

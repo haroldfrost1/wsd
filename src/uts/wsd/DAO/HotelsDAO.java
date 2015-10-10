@@ -1,6 +1,8 @@
 package uts.wsd.DAO;
 
 import java.io.*;
+import java.util.ArrayList;
+
 import javax.xml.bind.*;
 import uts.wsd.domain.*;
 
@@ -17,8 +19,8 @@ public class HotelsDAO {
 	/**
 	 * @return the hotels
 	 */
-	public Hotels getHotels() {
-		return hotels;
+	public ArrayList<Hotel> getHotels() {
+		return hotels.getHotels();
 	}
 
 	/**
@@ -29,14 +31,16 @@ public class HotelsDAO {
 	}
 
 	public HotelsDAO() {
-		// initialize filePath to 
-		// "hotels.xml"
-		setFilePath("hotels.xml");
-		readHotels();
+		// init with setting filePath to "hotels.xml"will not work!!!
+		// 
+		
+		//initializing
+		this.hotels = new Hotels();
 	}
 	
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+		readHotels();
 	}
 
 	public void save(){
@@ -61,7 +65,7 @@ public class HotelsDAO {
 			jc = JAXBContext.newInstance(Hotels.class);
 			Unmarshaller un = jc.createUnmarshaller();
 			
-			// Unmarshall from authors.xml
+			// Unmarshall from hotels.xml
 			FileInputStream fin = new FileInputStream(filePath);
 			hotels = (Hotels)un.unmarshal(fin);
 			

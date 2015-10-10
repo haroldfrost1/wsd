@@ -1,32 +1,33 @@
 package uts.wsd.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement(name = "review")
-public class Review {
+public class Review implements Serializable{
 	
-	@XmlElement
+	
 	private int id;
 	
-	@XmlElement
+	
 	private int hotelId;
 	
-	@XmlElement
+	
 	private int authorId;
 	
-	@XmlElement
+	
 	private int rating;
 	
-	@XmlElement
-	private Date date;
+
+	private String date;
 	
-	@XmlElement
+
 	private String headline;
 	
-	@XmlElement
+	
 	private String description;
 	
 	
@@ -41,18 +42,32 @@ public class Review {
 		this.headline = null;
 		this.description = null;
 	}
+	
+	public Review(int id, int hotelId, int authorId, int rating,String date, String headline, String description){
+		this.id = id;
+		this.hotelId = hotelId;
+		this.authorId = authorId;
+		this.rating = rating;
+		
+		//not sure how to use the Date class,
+		//gonna use String for now
+		this.date = "2439/4390";
+		this.headline = headline;
+		this.description = description;
+		
+	}
 
-
+	@XmlElement
 	public int getId() {
 		return id;
 	}
 
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
+	@XmlElement
 	public int getHotelId() {
 		return hotelId;
 	}
@@ -62,7 +77,7 @@ public class Review {
 		this.hotelId = hotelId;
 	}
 
-
+	@XmlElement
 	public int getAuthorId() {
 		return authorId;
 	}
@@ -72,7 +87,7 @@ public class Review {
 		this.authorId = authorId;
 	}
 
-
+	@XmlElement
 	public int getRating() {
 		return rating;
 	}
@@ -82,17 +97,17 @@ public class Review {
 		this.rating = rating;
 	}
 
-
-	public Date getDate() {
+	@XmlElement
+	public String getDate() {
 		return date;
 	}
 
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-
+	@XmlElement
 	public String getHeadline() {
 		return headline;
 	}
@@ -102,7 +117,7 @@ public class Review {
 		this.headline = headline;
 	}
 
-
+	@XmlElement
 	public String getDescription() {
 		return description;
 	}
