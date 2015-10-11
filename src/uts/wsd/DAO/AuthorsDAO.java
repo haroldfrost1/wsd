@@ -3,7 +3,7 @@ package uts.wsd.DAO;
 
 
 import java.io.*;
-
+import java.util.ArrayList;
 
 import javax.xml.bind.*;
 
@@ -31,6 +31,19 @@ public class AuthorsDAO implements Serializable{
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 		readAuthors();
+	}
+	
+	public ArrayList<Author> getAuthors(){
+		return authors.getAuthors();
+	}
+	
+	public Author getAuthorById(int id){
+		for (Author author: getAuthors()){
+			if (author.getId()==id){
+				return author;
+			}
+		}
+		return null;
 	}
 			
 	public void save(){

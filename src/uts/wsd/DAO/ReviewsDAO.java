@@ -31,6 +31,15 @@ public class ReviewsDAO implements Serializable{
 		return reviews.getReviews();
 	}
 	
+	public Review getReviewById(int id){
+		for (Review review: getReviews()){
+			if (review.getId()==id){
+				return review;
+			}
+		}
+		return null;
+	}
+	
 	public void setFilePath(String filePath){
 		this.filePath = filePath;
 		readReviews();

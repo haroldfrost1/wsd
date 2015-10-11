@@ -34,13 +34,27 @@
 
 	<xsl:template match="header">
 		<div>
-			<p>This is a header</p>
+			<span>This is a header</span>
+			<ul>
+				<li><a href="login.jsp">Login</a></li>
+				<li><a href="register.jsp">Register</a></li>
+			</ul>
+		</div>
+	</xsl:template>
+	
+	<xsl:template match="logged-in-header">
+		<div>
+			<span>This is a logged-in-header</span>
+			<ul>
+				<li><a href="account.jsp">My Account</a></li>
+				<li><a href="logout.jsp">Logout</a></li>
+			</ul>
 		</div>
 	</xsl:template>
 
 	<xsl:template match="footer">
 		<div>
-			<p>This is a footer</p>
+			<span>THis is a footer</span>
 		</div>
 	</xsl:template>
 
@@ -106,6 +120,15 @@
 	</xsl:template>
 	
 	<xsl:template match="review">
-		<li><xsl:value-of select="@headline"/></li>
+		<li><a href="review.jsp?id={@id}&amp;hotelname={@hotelname}"><xsl:value-of select="@headline"/></a> <xsl:value-of select="@author"/> <xsl:value-of select="@date"></xsl:value-of></li>
+	</xsl:template>
+	
+	<xsl:template match="review-detail">
+		<table>
+			<tr><td>Headline: </td><td><xsl:value-of select="@headline"/></td></tr>
+			<tr><td>By: </td><td><xsl:value-of select="@author-name"></xsl:value-of></td></tr>
+			<tr><td>Date: </td><td><xsl:value-of select="@date"></xsl:value-of></td></tr>
+			<tr><td>Description: </td><td><xsl:value-of select="@description"></xsl:value-of></td></tr>
+		</table>
 	</xsl:template>
 </xsl:stylesheet>

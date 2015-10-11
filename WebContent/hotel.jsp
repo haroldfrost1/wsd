@@ -35,7 +35,7 @@
 		<% for (Review review: reviewsApp.getReviews()){
 			if (review.getHotelId()==hotel.getId()){
 		%>
-		<review id="<%=review.getId()%>" headline="<%=review.getHeadline()%>" date="<%=review.getDate()%>" star="<%=review.getRating()%>"></review>
+		<review id="<%=review.getId()%>" headline="<%=review.getHeadline()%>" date="<%=review.getDate()%>" star="<%=review.getRating()%>" hotelname="<%=hotel.getName()%>"></review>
 		<% 
 			}
 		} 

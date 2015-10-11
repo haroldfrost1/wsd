@@ -77,5 +77,12 @@ public class Author implements Serializable{
 		this.password = null;
 		this.email = null;
 	}
+	
+	public Author(int id, String name, String password, String email){
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.email = email;
+	}
 
 }

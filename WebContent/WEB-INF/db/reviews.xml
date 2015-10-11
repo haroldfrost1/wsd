@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reviews>
     <review>
-        <authorId>3</authorId>
+        <authorId>2</authorId>
         <description>Test description</description>
         <headline>Test headline</headline>
         <hotelId>1</hotelId>
@@ -9,7 +9,7 @@
         <rating>4</rating>
     </review>
     <review>
-        <authorId>3</authorId>
+        <authorId>2</authorId>
         <date>2439/4390</date>
         <description>Test second description</description>
         <headline>Test second headline</headline>
