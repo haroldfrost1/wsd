@@ -119,6 +119,39 @@
 		</div>
 	</xsl:template>
 	
+	<xsl:template match="post-review-link">
+		<xsl:choose>
+			<xsl:when test="@logged = 1"><a href="post.jsp?userId={@user-id}&amp;hotelId={@hotel-id}">Write a review</a></xsl:when>
+			<xsl:otherwise><a href="login.jsp">Login to write a review</a></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template match="post-review-form">
+		<form method="post" action="postAct.jsp">
+			<table>
+				<tr><td>Hotel name: </td><td><xsl:value-of select="@hotel-name"/></td></tr>
+				<tr><td>Headline: </td><td><input type="text" name="headline"/></td></tr>
+				<tr><td>Description: </td><td><input type="text" name="description"/></td></tr>
+				<tr>
+					<td>Rating: </td>
+					<td>
+						<input type="radio" name="star" value="1"/>1
+						<input type="radio" name="star" value="2"/>2
+						<input type="radio" name="star" value="3" checked="defaultChecked"/>3
+						<input type="radio" name="star" value="4"/>4
+						<input type="radio" name="star" value="5"/>5
+					</td>
+				</tr>
+				<tr><td><input type="hidden" name="hotelId" value="{@hotel-id}"></input></td><td><input type="submit" value="submit"></input></td></tr>				
+			</table>
+		</form>
+	</xsl:template>
+	
+	<xsl:template match="post-act">
+		<p>Review successfully submitted!</p>
+		<p>Please click <a href="index.jsp">here</a> to return to the main page.</p>
+	</xsl:template>
+	
 	<xsl:template match="review">
 		<li><a href="review.jsp?id={@id}&amp;hotelname={@hotelname}"><xsl:value-of select="@headline"/></a> <xsl:value-of select="@author"/> <xsl:value-of select="@date"></xsl:value-of></li>
 	</xsl:template>

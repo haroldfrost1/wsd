@@ -57,7 +57,8 @@
 		} 
 		%>
 	</review-list>
-	<post-review-link/>
+	<post-review-link <% if (author!=null){%> logged="1" user-id="<%=author.getId()%>" <%} else {%> logged="0" <%}%> hotel-id="<%= hotel.getId()%>"/>
 	<footer/>
+	
 		
 </page>

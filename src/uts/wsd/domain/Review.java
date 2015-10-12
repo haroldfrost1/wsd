@@ -43,7 +43,7 @@ public class Review implements Serializable{
 		this.description = null;
 	}
 	
-	public Review(int id, int hotelId, int authorId, int rating,String date, String headline, String description){
+	public Review(int id, int hotelId, int authorId, int rating, String date, String headline, String description){
 		this.id = id;
 		this.hotelId = hotelId;
 		this.authorId = authorId;

@@ -46,10 +46,10 @@ public class ReviewsDAO implements Serializable{
 	}
 		
 	public void addReview(Review review){
-		//readReviews();
+		readReviews();
 		
 		//Setting id to the current largest + 1
-		//review.setId(reviews.getLargestId() + 1);
+		review.setId(reviews.getLargestId() + 1);
 		
 		//add & save
 		reviews.addReview(review);
