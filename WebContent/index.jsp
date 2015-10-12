@@ -23,15 +23,13 @@
 	<%
 		if (author==null){
 	%>
-	<header>
+	<header/>
 		<!-- display header here  -->
-	</header>
 	<%
 		} else {
 	%>
-	<logged-in-header>
+	<logged-in-header username="<%=author.getName()%>"/>
 		<!-- display header here  -->
-	</logged-in-header>
 	<%		
 		}
 	%>

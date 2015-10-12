@@ -45,6 +45,16 @@ public class AuthorsDAO implements Serializable{
 		}
 		return null;
 	}
+	
+	public Author getAuthor(String name, String password){
+		for (Author author : getAuthors()){
+			if (author.getName().equals(name)){
+				if (author.getPassword().equals(password))
+					return author;
+			}
+		}
+		return null;
+	}
 			
 	public void save(){
 		try{

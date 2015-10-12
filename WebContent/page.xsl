@@ -44,7 +44,7 @@
 	
 	<xsl:template match="logged-in-header">
 		<div>
-			<span>This is a logged-in-header</span>
+			<span>Welcome! <xsl:value-of select="@username"/>.</span>
 			<ul>
 				<li><a href="account.jsp">My Account</a></li>
 				<li><a href="logout.jsp">Logout</a></li>
@@ -130,5 +130,30 @@
 			<tr><td>Date: </td><td><xsl:value-of select="@date"></xsl:value-of></td></tr>
 			<tr><td>Description: </td><td><xsl:value-of select="@description"></xsl:value-of></td></tr>
 		</table>
+	</xsl:template>
+	
+	<xsl:template match="login-form">
+		<form action="loginAct.jsp" method="post">
+			<table>
+				<tr><td>Username: </td><td><input type="text" name="name"/></td></tr>
+				<tr><td>Password: </td><td><input type="password" name="password"/></td></tr>
+				<tr><td></td><td><input type="submit">Submit</input></td></tr>
+			</table>
+		</form>
+	</xsl:template>
+	
+	<xsl:template match="welcome">
+		<p>Welcome! <xsl:value-of select="@username"/>.</p>
+		<p>Please click <a href="index.jsp">here</a> to return to the main page.</p>
+	</xsl:template>
+	
+	<xsl:template match="loggin-fail">
+		<p>Sorry, incorrect combination of username and password.</p>
+		<p>Please click <a href="login.jsp">here</a> to try again.</p>
+	</xsl:template>
+	
+	<xsl:template match="logout">
+		<p>You have successfullly logged out.</p>
+		<p>Please click <a href="index.jsp">here</a> to return to the main page.</p>
 	</xsl:template>
 </xsl:stylesheet>

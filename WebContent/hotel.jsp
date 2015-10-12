@@ -2,12 +2,14 @@
 <?xml-stylesheet type="text/xsl" href="page.xsl"?>
 <%@ page import="uts.wsd.domain.Hotel" %>
 <%@ page import="uts.wsd.domain.Review" %>
+<%@ page import="uts.wsd.domain.Author" %>
 <%	
 	//retrieve "real" path
 	//since the jsp page is running in a different directory from the classes
 	//So you can't hard-code the filePath in the class
 	String hotelsFilePath = application.getRealPath("WEB-INF/db/hotels.xml");
 	String reviewsFilePath = application.getRealPath("WEB-INF/db/reviews.xml");
+	Author author = (Author)session.getAttribute("author");
 %>
 
 <!-- use HotelsDAO bean and read the hotels from filePath -->
@@ -27,10 +29,24 @@
 %>
   
 <page title="The Hotels">
-	<header>
+	<%
+		if (author==null){
+	%>
+	<header/>
 		<!-- display header here  -->
-	</header>
+	<%
+		} else {
+	%>
+	<logged-in-header username="<%=author.getName()%>"/>
+		<!-- display header here  -->
+	<%		
+		}
+	%>
+	
+	<!-- display hotel details -->
 	<hotel-detail id="<%= hotel.getId()%>" name="<%= hotel.getName()%>" city="<%= hotel.getCity()%>" country="<%=hotel.getCountry()%>" address="<%= hotel.getAddress()%>" email="<%=hotel.getEmail()%>" telephone="<%=hotel.getTelephone()%>"></hotel-detail>
+	
+	<!-- display review headlines -->
 	<review-list>
 		<% for (Review review: reviewsApp.getReviews()){
 			if (review.getHotelId()==hotel.getId()){
@@ -41,7 +57,7 @@
 		} 
 		%>
 	</review-list>
-	<footer>
-		<!-- display footer here  -->
-	</footer>
+	<post-review-link/>
+	<footer/>
+		
 </page>
