@@ -54,7 +54,7 @@ public class HotelsDAO implements Serializable{
 
 	public void save(){
 		try{
-			JAXBContext jc = JAXBContext.newInstance(Authors.class);
+			JAXBContext jc = JAXBContext.newInstance(Hotels.class);
 			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			m.marshal(hotels, new FileOutputStream(filePath));

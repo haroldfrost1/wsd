@@ -30,14 +30,6 @@ public class Reviews implements Serializable{
 	
 	public void addReview(Review review){
 		reviews.add(review);
-		
-		//loop through the list &
-		//Update the largest id
-		for (Review r : reviews){
-			if(largestId < r.getId()){
-				largestId = r.getId();
-			}
-		}
 	}
 	
 	public void deleteReview(Review review){

@@ -27,7 +27,7 @@
 		
 		Review review = new Review(0, hotelId, author.getId(), star, date, headline, description);
 		reviewsApp.addReview(review);
-		reviewsApp.save();
+
 	}
 %>
 	<post-act/>

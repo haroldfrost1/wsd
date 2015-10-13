@@ -37,7 +37,22 @@ public class ReviewsDAO implements Serializable{
 				return review;
 			}
 		}
+		System.out.println("fuck");
 		return null;
+	}
+	
+	
+	// Return a list of reviews that belong to the author
+	public ArrayList<Review> getMyReviewsByAuthorId(int authorId){
+		ArrayList<Review> myReviews = new ArrayList<Review>();
+		
+		for (Review review : getReviews()){
+			if (review.getAuthorId()==authorId){
+				myReviews.add(review);
+			}
+		}
+		
+		return myReviews;
 	}
 	
 	public void setFilePath(String filePath){
@@ -48,16 +63,27 @@ public class ReviewsDAO implements Serializable{
 	public void addReview(Review review){
 		readReviews();
 		
-		//Setting id to the current largest + 1
-		review.setId(reviews.getLargestId() + 1);
+		// Setting id to the current largest + 1
+		review.setId(getLargestId() + 1);
 		
 		//add & save
 		reviews.addReview(review);
 		save();
 	}
 	
+	public int getLargestId(){
+		//loop through the list &
+		//Update the largest id
+		int largestId =0;
+		for (Review r : getReviews()){
+			if(largestId < r.getId()){
+				largestId = r.getId();
+			}
+		}
+		return largestId;
+	}
+
 	public void deleteReview(Review review){
-		readReviews();
 		reviews.deleteReview(review);
 		save();
 	}
@@ -66,8 +92,10 @@ public class ReviewsDAO implements Serializable{
 		try{
 			JAXBContext jc = JAXBContext.newInstance(Reviews.class);
 			Marshaller m = jc.createMarshaller();
+			
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			m.marshal(reviews, new FileOutputStream(filePath));
+			m.marshal(this.reviews, new FileOutputStream(filePath));
+			//m.marshal(reviews, System.out);
 		}
 		catch (JAXBException e) {
 			e.printStackTrace();

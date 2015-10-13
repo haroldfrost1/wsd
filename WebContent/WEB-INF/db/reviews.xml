@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reviews>
     <review>
-        <authorId>2</authorId>
+        <authorId>3</authorId>
+        <date>2439/4390</date>
         <description>Test description</description>
         <headline>Test headline</headline>
-        <hotelId>1</hotelId>
-        <id>1</id>
-        <rating>4</rating>
-    </review>
-    <review>
-        <authorId>2</authorId>
-        <date>2439/4390</date>
-        <description>Test second description</description>
-        <headline>Test second headline</headline>
         <hotelId>2</hotelId>
-        <id>2</id>
+        <id>1</id>
         <rating>4</rating>
     </review>
 </reviews>

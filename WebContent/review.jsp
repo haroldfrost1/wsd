@@ -19,10 +19,11 @@
 	int id = Integer.parseInt(request.getParameter("id"));
     Review review = reviewsApp.getReviewById(id);
     Author author = authorsApp.getAuthorById(review.getAuthorId());
+    String hotelname = request.getParameter("hotelname");
 %>
 
 <page>
 	<header></header>
-	<review-detail id="<%= review.getId()%>" author-name="<%=author.getName()%>" description="<%=review.getDescription()%>" headline="<%=review.getHeadline()%>" rating="<%=review.getRating() %>" hotelname="<%=request.getAttribute("hotelname")%>"></review-detail>
+	<review-detail id="<%= review.getId()%>" author-name="<%=author.getName()%>" description="<%=review.getDescription()%>" headline="<%=review.getHeadline()%>" rating="<%=review.getRating() %>" hotel-name="<%=hotelname%>"></review-detail>
 	<footer></footer>
 </page>

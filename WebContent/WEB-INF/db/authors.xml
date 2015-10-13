@@ -12,5 +12,11 @@
 		<password>kate</password>
 		<email>kate@fake.com</email>
 	</author>
+	<author>
+		<id>3</id>
+		<name>kateia</name>
+		<password>kateia</password>
+		<email>kateia@fake.com</email>
+	</author>
 </authors>
 

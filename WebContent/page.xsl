@@ -46,7 +46,7 @@
 		<div>
 			<span>Welcome! <xsl:value-of select="@username"/>.</span>
 			<ul>
-				<li><a href="account.jsp">My Account</a></li>
+				<li><a href="myReviews.jsp">My Reviews</a></li>
 				<li><a href="logout.jsp">Logout</a></li>
 			</ul>
 		</div>
@@ -147,24 +147,41 @@
 		</form>
 	</xsl:template>
 	
+	<xsl:template match="my-review-list">
+		<ul>
+			<xsl:apply-templates/>
+		</ul>
+		<a href="index.jsp">Back to main page</a>
+	</xsl:template>
+	
+	<xsl:template match="my-review">
+		<li><xsl:value-of select="@headline"/> <xsl:value-of select="@date"/><a href="deleteAct.jsp?reviewId={@id}">Delete</a></li>
+	</xsl:template>
+	
 	<xsl:template match="post-act">
 		<p>Review successfully submitted!</p>
 		<p>Please click <a href="index.jsp">here</a> to return to the main page.</p>
 	</xsl:template>
 	
 	<xsl:template match="review">
-		<li><a href="review.jsp?id={@id}&amp;hotelname={@hotelname}"><xsl:value-of select="@headline"/></a> <xsl:value-of select="@author"/> <xsl:value-of select="@date"></xsl:value-of></li>
+		<li><a href="review.jsp?id={@id}&amp;hotelname={@hotel-name}"><xsl:value-of select="@headline"/></a><xsl:value-of select="@author"/> <xsl:value-of select="@date"/></li>
 	</xsl:template>
 	
 	<xsl:template match="review-detail">
 		<table>
 			<tr><td>Headline: </td><td><xsl:value-of select="@headline"/></td></tr>
-			<tr><td>By: </td><td><xsl:value-of select="@author-name"></xsl:value-of></td></tr>
-			<tr><td>Date: </td><td><xsl:value-of select="@date"></xsl:value-of></td></tr>
-			<tr><td>Description: </td><td><xsl:value-of select="@description"></xsl:value-of></td></tr>
+			<tr><td>By: </td><td><xsl:value-of select="@author-name"/></td></tr>
+			<tr><td>Date: </td><td><xsl:value-of select="@date"/></td></tr>
+			<tr><td>Description: </td><td><xsl:value-of select="@description"/></td></tr>
+			<tr><td>Rating: </td><td><xsl:value-of select="@star"/></td></tr>
 		</table>
 	</xsl:template>
 	
+	<xsl:template match="delete-message">
+		<p>Successfully deleted!</p>
+		<p>Please click <a href="myReviews.jsp">here</a> to return to my reviews page.</p>
+	</xsl:template>
+		
 	<xsl:template match="login-form">
 		<form action="loginAct.jsp" method="post">
 			<table>
