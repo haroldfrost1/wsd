@@ -22,7 +22,7 @@ public class Review implements Serializable{
 	private int rating;
 	
 
-	private String date;
+	private Date date;
 	
 
 	private String headline;
@@ -38,12 +38,12 @@ public class Review implements Serializable{
 		this.hotelId = 0;
 		this.authorId = 0;
 		this.rating = 0;
-		this.date = null;
+		this.date = new Date();
 		this.headline = null;
 		this.description = null;
 	}
 	
-	public Review(int id, int hotelId, int authorId, int rating, String date, String headline, String description){
+	public Review(int id, int hotelId, int authorId, int rating, Date date, String headline, String description){
 		this.id = id;
 		this.hotelId = hotelId;
 		this.authorId = authorId;
@@ -51,7 +51,7 @@ public class Review implements Serializable{
 		
 		//not sure how to use the Date class,
 		//gonna use String for now
-		this.date = "2439/4390";
+		this.date = date;
 		this.headline = headline;
 		this.description = description;
 		
@@ -98,12 +98,12 @@ public class Review implements Serializable{
 	}
 
 	@XmlElement
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

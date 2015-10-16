@@ -23,6 +23,8 @@ public class Hotels implements Serializable{
 		this.hotels = hotels;
 	}
 	
-	
+	public void addHotel(Hotel hotel) {
+		this.hotels.add(hotel);
+	}
 
 }

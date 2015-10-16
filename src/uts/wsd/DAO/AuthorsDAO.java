@@ -9,105 +9,41 @@ import javax.xml.bind.*;
 
 import uts.wsd.domain.*;
 
-public class AuthorsDAO implements Serializable{
+public interface AuthorsDAO{
 	/*
-	 * Data Access Object class for
+	 * Data Access Object interface for
 	 * Authors
 	 */
 	
+	/**************************
+	 *  Getters and Setters
+	 **************************/
+	/*
+	 * @param filePath
+	 * Set file path
+	 */
+	public void setFilePath(String filePath);
 	
-	private String filePath;
-	private Authors authors;
+	public ArrayList<Author> getAuthors();
 	
-	public AuthorsDAO() {
-		// init with setting filePath to "authors.xml" will not work!!!
-		// setFilePath("WebContent/WEB-INF/db/authors.xml");
-		// jsp pages will run in a different directory
-		
-		//initialize authors
-		authors = new Authors();
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-		readAuthors();
-	}
+	/*
+	 * @param int id 
+	 * @return an Author of specified id
+	 */
+	public Author getAuthorById(int id);
 	
-	public ArrayList<Author> getAuthors(){
-		return authors.getAuthors();
-	}
-	
-	public Author getAuthorById(int id){
-		for (Author author: getAuthors()){
-			if (author.getId()==id){
-				return author;
-			}
-		}
-		return null;
-	}
-	
-	public Author getAuthor(String name, String password){
-		for (Author author : getAuthors()){
-			if (author.getName().equals(name)){
-				if (author.getPassword().equals(password))
-					return author;
-			}
-		}
-		return null;
-	}
+	/*
+	 * Login method
+	 * @param String name, String password
+	 * @return an Author matches the combination
+	 */
+	public Author getAuthor(String name, String password);
 			
-	public void save(){
-		try{
-			JAXBContext jc = JAXBContext.newInstance(Authors.class);
-			Marshaller m = jc.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			m.marshal(authors, new FileOutputStream(filePath));
-		}
-		catch (JAXBException e) {
-			e.printStackTrace();
-		}	
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+	/**************************
+	 * Load and save methods
+	 **************************/
+	public void save();
+	public void readAuthors();
 	
-	public void readAuthors(){
-		JAXBContext jc;
-		try{
-			// ready unmarshaller
-			jc = JAXBContext.newInstance(Authors.class);
-			Unmarshaller un = jc.createUnmarshaller();
-			
-			// Unmarshall from authors.xml
-			FileInputStream fin = new FileInputStream(filePath);
-			authors = (Authors)un.unmarshal(fin);
-			
-			fin.close();
-		}
-		catch (JAXBException e){
-			e.printStackTrace();
-		}
-		catch (FileNotFoundException e){
-			e.printStackTrace();
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-			// TODO: handle exception
-		}
-	}
-	
-//	We don't need this function yet 
-//	
-//	public void addAuthor(Author author){
-//		
-//		readAuthors();
-//		
-//		// Setting author id with current largest id +1
-//		author.setId(authors.getLargestId() + 1);
-//		
-//		//add & save
-//		authors.addAuthor(author);
-//		save();
-//	}
 
 }

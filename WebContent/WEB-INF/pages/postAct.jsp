@@ -2,6 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="page.xsl"?>
 <%@ page import="uts.wsd.domain.Review"%>
 <%@ page import="uts.wsd.domain.Author"%>
+<%@ page import="java.util.Date"%>
 <%
  	String reviewsFilePath = application.getRealPath("WEB-INF/db/reviews.xml");
 %>
@@ -23,9 +24,9 @@
 		String hotelname = request.getParameter("hotelname");
 		int star = Integer.parseInt(request.getParameter("star"));
 		int hotelId = Integer.parseInt(request.getParameter("hotelId"));
-		String date = "11/11/2011";
+
 		
-		Review review = new Review(0, hotelId, author.getId(), star, date, headline, description);
+		Review review = new Review(0, hotelId, author.getId(), star, new Date(), headline, description);
 		reviewsApp.addReview(review);
 
 	}
