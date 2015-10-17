@@ -19,9 +19,6 @@
 					width:480px;
 					padding: 28px;
 					}
-					img{
-					width:480px;
-					}
 				</style>
 			</head>
 			<body>
@@ -164,7 +161,7 @@
 	</xsl:template>
 	
 	<xsl:template match="review">
-		<li><a href="review.jsp?id={@id}&amp;hotelname={@hotel-name}"><xsl:value-of select="@headline"/></a><xsl:value-of select="@author"/> <xsl:value-of select="@date"/></li>
+		<li><a href="review.jsp?id={@id}"><xsl:value-of select="@headline"/></a>, <xsl:value-of select="@rating"/>, <xsl:value-of select="@date"/></li>
 	</xsl:template>
 	
 	<xsl:template match="review-detail">
@@ -173,7 +170,7 @@
 			<tr><td>By: </td><td><xsl:value-of select="@author-name"/></td></tr>
 			<tr><td>Date: </td><td><xsl:value-of select="@date"/></td></tr>
 			<tr><td>Description: </td><td><xsl:value-of select="@description"/></td></tr>
-			<tr><td>Rating: </td><td><xsl:value-of select="@star"/></td></tr>
+			<tr><td>Rating: </td><td><xsl:value-of select="@rating"/></td></tr>
 		</table>
 	</xsl:template>
 	

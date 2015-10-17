@@ -18,7 +18,6 @@ public class Review implements Serializable{
 	
 	private int authorId;
 	
-	
 	private int rating;
 	
 

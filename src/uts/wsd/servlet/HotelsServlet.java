@@ -1,11 +1,14 @@
-package uts.wsd.serlvet;
+package uts.wsd.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import uts.wsd.facade.*;
+import uts.wsd.domain.*;
 
 public class HotelsServlet extends HttpServlet {
 
@@ -16,11 +19,14 @@ public class HotelsServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		// super.doGet(req, resp);
 		
-		//Hotels
+		Service service = new Service();
+		Author user = (Author)req.getSession().getAttribute("user");
 		
+		req.setAttribute("hotels", service.getHotels());
+		req.getRequestDispatcher("WEB-INF/pages/index.jsp").forward(req, resp);
 	}
 
 	/* (non-Javadoc)
@@ -28,7 +34,7 @@ public class HotelsServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		super.doPost(req, resp);
 	}
 	

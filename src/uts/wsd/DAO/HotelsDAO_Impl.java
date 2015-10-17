@@ -16,6 +16,7 @@ public class HotelsDAO_Impl implements HotelsDAO{
 				
 				//initializing
 				this.hotels = new Hotels();
+				this.setFilePath(this.getClass().getClassLoader().getResource("hotels.xml").getPath());
 	}
 	
 	private Hotels hotels;

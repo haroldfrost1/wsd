@@ -21,6 +21,7 @@ public class AuthorsDAO_Impl implements AuthorsDAO {
 				
 				//initialize authors
 				authors = new Authors();
+				this.setFilePath(this.getClass().getClassLoader().getResource("authors.xml").getPath());
 	}
 	
 	@Override

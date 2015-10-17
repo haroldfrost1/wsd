@@ -14,11 +14,12 @@ public class ReviewsDAO_Impl implements ReviewsDAO{
 	private Reviews reviews;
 	
 	public ReviewsDAO_Impl() {
-		// NEVER init with setting filePath to "reviews.xml" !!!
+				// NEVER init with setting filePath to "reviews.xml" !!!
 				// setFilePath("WebContent/WEB-INF/db/reviews.xml"); NOOOO!!!
 				
 				//initializing
-				this.reviews = new Reviews();				
+				this.reviews = new Reviews();			
+				this.setFilePath(this.getClass().getClassLoader().getResource("reviews.xml").getPath());
 	}
 	
 	
@@ -42,6 +43,19 @@ public class ReviewsDAO_Impl implements ReviewsDAO{
 		}
 		
 		return null;
+	}
+	
+	@Override
+	public ArrayList<Review> getReviewsByHotelId(int hotelId) {
+		ArrayList<Review> result = new ArrayList<Review>();
+		
+		for (Review review : getReviews()){
+			if (review.getId() == hotelId){
+				result.add(review);
+			}
+		}
+		
+		return result;
 	}
 	
 	@Override
@@ -146,5 +160,9 @@ public class ReviewsDAO_Impl implements ReviewsDAO{
 			// TODO: handle exception
 		}
 	}
+
+
+
+	
 
 }

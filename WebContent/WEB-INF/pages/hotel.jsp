@@ -1,63 +1,30 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8" pageEncoding="UTF-8"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="page.xsl"?>
-<%@ page import="uts.wsd.domain.Hotel" %>
-<%@ page import="uts.wsd.domain.Review" %>
-<%@ page import="uts.wsd.domain.Author" %>
-<%	
-	//retrieve "real" path
-	//since the jsp page is running in a different directory from the classes
-	//So you can't hard-code the filePath in the class
-	String hotelsFilePath = application.getRealPath("WEB-INF/db/hotels.xml");
-	String reviewsFilePath = application.getRealPath("WEB-INF/db/reviews.xml");
-	Author author = (Author)session.getAttribute("author");
-%>
+<?xml-stylesheet type="text/xsl" href="${pageContext.request.contextPath}/page.xsl"?>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!-- use HotelsDAO bean and read the hotels from filePath -->
-<jsp:useBean id="hotelsApp" class="uts.wsd.DAO.HotelsDAO" scope="application">
-	<jsp:setProperty name="hotelsApp" property="filePath" value="<%=hotelsFilePath%>" />
-</jsp:useBean>
-
-<!-- use ReviewsDAO bean and read the reviews from filePath -->
-<jsp:useBean id="reviewsApp" class="uts.wsd.DAO.ReviewsDAO" scope="application">
-	<jsp:setProperty name="reviewsApp" property="filePath" value="<%=reviewsFilePath%>" />
-</jsp:useBean>
-
-<%
-	int id = Integer.parseInt(request.getParameter("id"));
-	Hotel hotel = hotelsApp.getHotelById(id);
-	
-%>
   
 <page title="The Hotels">
-	<%
-		if (author==null){
-	%>
-	<header/>
-		<!-- display header here  -->
-	<%
-		} else {
-	%>
-	<logged-in-header username="<%=author.getName()%>"/>
-		<!-- display header here  -->
-	<%		
-		}
-	%>
+	<c:if test="${not empty user }">
+		<logged-in-header/>
+	</c:if>
+	<c:if test="${empty user }">
+		<header/>
+	</c:if>
 	
-	<!-- display hotel details -->
-	<hotel-detail id="<%= hotel.getId()%>" name="<%= hotel.getName()%>" city="<%= hotel.getCity()%>" country="<%=hotel.getCountry()%>" address="<%= hotel.getAddress()%>" email="<%=hotel.getEmail()%>" telephone="<%=hotel.getTelephone()%>"></hotel-detail>
+	<c:if test="${hotel != null}">
+		<hotel-detail id="${hotel.id}" name="${hotel.name}" city="${hotel.city}" country="${hotel.country}" address="${hotel.address}" email="${hotel.email}" telephone="${hotel.telephone}"></hotel-detail>
+		<review-list>
+			<c:forEach var="review" items="${reviews }">
+			<review id="${review.id}" headline="${review.headline}" rating="${review.rating}" date="${review.date}"></review>
+			</c:forEach>
+		</review-list>
+	</c:if>
+	<c:if test="${hotel == null }">
+		<error-message></error-message>
+	</c:if>
 	
-	<!-- display review headlines -->
-	<review-list>
-		<% for (Review review: reviewsApp.getReviews()){
-			if (review.getHotelId()==hotel.getId()){
-		%>
-		<review id="<%=review.getId()%>" headline="<%=review.getHeadline()%>" date="<%=review.getDate()%>" star="<%=review.getRating()%>" hotelname="<%=hotel.getName()%>"></review>
-		<% 
-			}
-		} 
-		%>
-	</review-list>
-	<post-review-link <% if (author!=null){%> logged="1" user-id="<%=author.getId()%>" <%} else {%> logged="0" <%}%> hotel-id="<%= hotel.getId()%>"/>
+	
+	
 	<footer/>
 	
 		

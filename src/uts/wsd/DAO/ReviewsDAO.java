@@ -32,11 +32,21 @@ public interface ReviewsDAO{
 	 */
 	public Review getReviewById(int id);
 	
-	
-	// Return a list of reviews that belong to the author
-	public ArrayList<Review> getMyReviewsByAuthorId(int authorId);
 	public void setFilePath(String filePath);
+	
+	
+	/*
+	 *  @return a list of reviews that belong to the author
+	 */
+	public ArrayList<Review> getMyReviewsByAuthorId(int authorId);
+	
+	/*
+	 * @return a list of reviews that has the hotel id
+	 */
+	public ArrayList<Review> getReviewsByHotelId(int hotelId);
+	
 		
+	
 	
 	/**************************
 	 *  Add & Delete Methods
@@ -55,4 +65,6 @@ public interface ReviewsDAO{
 	 **************************/
 	public boolean saved();
 	public void readReviews();
+
+	
 }

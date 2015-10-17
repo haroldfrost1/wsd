@@ -12,12 +12,14 @@ import uts.wsd.domain.*;
  */
 public class Service {
 	
-	private HotelsDAO hotelsDAO = new HotelsDAO_Impl();
-	private AuthorsDAO authorsDAO = new AuthorsDAO_Impl();
-	private ReviewsDAO reviewsDAO = new ReviewsDAO_Impl();
+	private HotelsDAO hotelsDAO;
+	private AuthorsDAO authorsDAO;
+	private ReviewsDAO reviewsDAO;
 	
 	public Service(){
-		
+		this.hotelsDAO = new HotelsDAO_Impl();
+		this.authorsDAO = new AuthorsDAO_Impl();
+		this.reviewsDAO = new ReviewsDAO_Impl();
 	}
 	
 	/*******************
@@ -68,6 +70,10 @@ public class Service {
 	public boolean deleteReview(Review review) {
 		return reviewsDAO.deleteReview(review);
 	}
+	
+	public ArrayList<Review> getReviewsByHotelId(int hotelId) {
+		return reviewsDAO.getReviewsByHotelId(hotelId);
+	}
 
 	/*******************
 	 * AuthorsDAO methods
@@ -75,6 +81,12 @@ public class Service {
 	public ArrayList<Author> getAuthors() {
 		return authorsDAO.getAuthors();
 	}
+
+	public Author getAuthorById(int authorId) {
+		return authorsDAO.getAuthorById(authorId);
+	}
+
+	
 
 	
 
