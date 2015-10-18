@@ -160,7 +160,7 @@
 	</xsl:template>
 	
 	<xsl:template match="my-review">
-		<li><xsl:value-of select="@headline"/> <xsl:value-of select="@date"/><a href="deleteAct.jsp?reviewId={@id}">Delete</a></li>
+		<li><xsl:value-of select="@headline"/> <xsl:value-of select="@date"/><a href="deleteAct.jsp?id={@id}">Delete</a></li>
 	</xsl:template>
 	
 	<xsl:template match="post-act">
@@ -182,9 +182,9 @@
 		</table>
 	</xsl:template>
 	
-	<xsl:template match="delete-message">
-		<p>Successfully deleted!</p>
-		<p>Please click <a href="myReviews.jsp">here</a> to return to my reviews page.</p>
+	<xsl:template match="error-message">
+		<p><xsl:value-of select="@msg"></xsl:value-of></p>
+		<p>Please click <a href="index.jsp">here</a> to return to the main page.</p>
 	</xsl:template>
 		
 	<xsl:template match="login-form">

@@ -13,8 +13,9 @@
 	<c:if test="${myReviews != null}">
 	<my-review-list>
 		<c:forEach var="review" items="${myReviews}">
-			<my-review id="${review.id}" author-name="${author.name}" description="${review.description}" headline="${review.headline}" rating=""${review.rating}" date="${review.date}"></my-review>
+			<my-review headline="${review.headline}" date="${review.date}" rating="${review.rating}" id="${review.id}"></my-review>
 		</c:forEach>
 	</my-review-list>
 	</c:if>
+	<footer/>
 </page>

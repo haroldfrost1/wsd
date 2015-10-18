@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<reviews>
+<reviews xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="reviews.xsd">
     <review>
         <authorId>3</authorId>
         <date>2011-10-16</date>

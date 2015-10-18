@@ -127,4 +127,26 @@
     <url-pattern>/myReviews.jsp</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description></description>
+    <display-name>Error Message</display-name>
+    <servlet-name>Error Message Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.ErrorMessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Error Message Servlet</servlet-name>
+    <url-pattern>/error.jsp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>Delete Review Action</display-name>
+    <servlet-name>Delete Review Action Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.DeleteActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Delete Review Action Servlet</servlet-name>
+    <url-pattern>/deleteAct.jsp</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

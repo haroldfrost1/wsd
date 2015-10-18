@@ -5,15 +5,15 @@
 
 
 <page title="Review Detail Page">
-	<%-- <c:if test="${not empty user }">
+	<c:if test="${not empty user }">
 		<logged-in-header/>
 	</c:if>
 	<c:if test="${empty user }">
 		<header/>
-	</c:if> --%>
+	</c:if>
 	
 	<c:if test="${review != null }">
-	<review-detail id="${review.id}" author-name="${author.name}" description="${review.description}" headline="${review.headline}" rating=""${review.rating}" date="${review.date}"/>
+	<review-detail id="${review.id}" headline="${review.headline}" author-name="${author.name}" date="${review.date}" description="${review.description}" rating="${review.rating}"/>
 	</c:if>
-	<!-- <footer/> -->
+	<footer/>
 </page>
