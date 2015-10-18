@@ -74,6 +74,10 @@ public class Service {
 	public ArrayList<Review> getReviewsByHotelId(int hotelId) {
 		return reviewsDAO.getReviewsByHotelId(hotelId);
 	}
+	
+	public ArrayList<Review> getMyReviewsByAuthorId(int authorId) {
+		return reviewsDAO.getMyReviewsByAuthorId(authorId);
+	}
 
 	/*******************
 	 * AuthorsDAO methods
@@ -85,6 +89,12 @@ public class Service {
 	public Author getAuthorById(int authorId) {
 		return authorsDAO.getAuthorById(authorId);
 	}
+
+	public Author getAuthorByCombination(String username, String password) {
+		return authorsDAO.getAuthor(username, password);
+	}
+
+	
 
 	
 

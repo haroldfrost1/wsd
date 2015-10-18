@@ -6,36 +6,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uts.wsd.domain.*;
-import uts.wsd.facade.*;
 
-public class ReviewDetailServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		try{
-			Integer id = Integer.parseInt(req.getParameter("id"));
-
-			Service service = new Service();
-			Review review = service.getReviewById(id.intValue());
-			if (review != null){
-				req.setAttribute("review", review);
-				req.setAttribute("author", service.getAuthorById(review.getAuthorId()));
-				req.getRequestDispatcher("WEB-INF/pages/review.jsp").forward(req, resp);
-			}
-			else{
-				String msg = "Review Not Found!";
-				resp.sendRedirect("error.jsp?msg=" + msg);
-			}
-		}
-		catch(NumberFormatException e){
-			String msg = "Please send a paramter id!";
-			resp.sendRedirect("error.jsp?msg=" + msg);
-		}
+		// TODO Auto-generated method stub
+		req.getSession().removeAttribute("user");
+		resp.sendRedirect("index.jsp");
 	}
 
 	/* (non-Javadoc)
@@ -43,8 +24,8 @@ public class ReviewDetailServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
 
-	
 }

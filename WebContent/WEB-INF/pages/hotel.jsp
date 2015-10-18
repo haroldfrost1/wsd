@@ -5,7 +5,7 @@
   
 <page title="The Hotels">
 	<c:if test="${not empty user }">
-		<logged-in-header/>
+		<logged-in-header username="${user.name}"/>
 	</c:if>
 	<c:if test="${empty user }">
 		<header/>
@@ -18,13 +18,9 @@
 			<review id="${review.id}" headline="${review.headline}" rating="${review.rating}" date="${review.date}"></review>
 			</c:forEach>
 		</review-list>
+		<post-form hotel-id="${hotel.id}" msg="${msg}"></post-form>
 	</c:if>
-	<c:if test="${hotel == null }">
-		<error-message></error-message>
-	</c:if>
-	
-	
-	
+		
 	<footer/>
 	
 		

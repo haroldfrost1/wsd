@@ -157,7 +157,6 @@ public class ReviewsDAO_Impl implements ReviewsDAO{
 		}
 		catch (IOException e) {
 			e.printStackTrace();
-			// TODO: handle exception
 		}
 	}
 

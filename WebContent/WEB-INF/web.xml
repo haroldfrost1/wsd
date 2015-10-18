@@ -72,4 +72,59 @@
     <url-pattern>/review.jsp</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description></description>
+    <display-name>Login Action</display-name>
+    <servlet-name>Login Action Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.LoginActServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login Action Servlet</servlet-name>
+    <url-pattern>/loginAct.jsp</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>Login Form</display-name>
+    <servlet-name>Login Form Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.LoginFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login Form Servlet</servlet-name>
+    <url-pattern>/login.jsp</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout Servlet</servlet-name>
+    <url-pattern>/logout.jsp</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>Post Action</display-name>
+    <servlet-name>Post Action Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.PostActServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Post Action Servlet</servlet-name>
+    <url-pattern>/postAct.jsp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>My Reviews</display-name>
+    <servlet-name>My Reviews Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.MyReviewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>My Reviews Servlet</servlet-name>
+    <url-pattern>/myReviews.jsp</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

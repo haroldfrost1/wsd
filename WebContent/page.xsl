@@ -116,32 +116,40 @@
 		</div>
 	</xsl:template>
 	
-	<xsl:template match="post-review-link">
-		<xsl:choose>
-			<xsl:when test="@logged = 1"><a href="post.jsp?userId={@user-id}&amp;hotelId={@hotel-id}">Write a review</a></xsl:when>
-			<xsl:otherwise><a href="login.jsp">Login to write a review</a></xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
-	
-	<xsl:template match="post-review-form">
-		<form method="post" action="postAct.jsp">
-			<table>
-				<tr><td>Hotel name: </td><td><xsl:value-of select="@hotel-name"/></td></tr>
-				<tr><td>Headline: </td><td><input type="text" name="headline"/></td></tr>
-				<tr><td>Description: </td><td><input type="text" name="description"/></td></tr>
-				<tr>
-					<td>Rating: </td>
-					<td>
-						<input type="radio" name="star" value="1"/>1
-						<input type="radio" name="star" value="2"/>2
-						<input type="radio" name="star" value="3" checked="defaultChecked"/>3
-						<input type="radio" name="star" value="4"/>4
-						<input type="radio" name="star" value="5"/>5
-					</td>
-				</tr>
-				<tr><td><input type="hidden" name="hotelId" value="{@hotel-id}"></input></td><td><input type="submit" value="submit"></input></td></tr>				
-			</table>
-		</form>
+	<xsl:template match="post-form">
+		<h2>Post Review</h2>
+	<form action="postAct.jsp" method="post">
+
+		<p style="color: red">
+			<xsl:value-of select="@msg" />
+		</p>
+
+		<input type="hidden" name="hotelId" value="{@hotel-id}"/>
+			<div>
+				<label>Headline</label>
+				<input type="text" name="headline"/>
+			</div>
+			<div>
+				<label>Description</label>
+				<input type="text" name="description"/>
+			</div>
+			<div>
+				<label>Rating</label>
+				<input type="radio" name="rating" value="1"/>
+					<label>1</label>
+					<input type="radio" name="rating" value="2"/>
+						<label>2</label>
+						<input type="radio" name="rating" value="3"/>
+							<label>3</label>
+							<input type="radio" name="rating" value="4"/>
+								<label>4</label>
+								<input type="radio" name="rating" value="5"/>
+									<label>5</label>
+			</div>
+			
+
+			<button type="submit">Post</button>
+	</form>
 	</xsl:template>
 	
 	<xsl:template match="my-review-list">
@@ -182,7 +190,7 @@
 	<xsl:template match="login-form">
 		<form action="loginAct.jsp" method="post">
 			<table>
-				<tr><td>Username: </td><td><input type="text" name="name"/></td></tr>
+				<tr><td>Username: </td><td><input type="text" name="username"/></td></tr>
 				<tr><td>Password: </td><td><input type="password" name="password"/></td></tr>
 				<tr><td></td><td><input type="submit">Submit</input></td></tr>
 			</table>

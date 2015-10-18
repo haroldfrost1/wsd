@@ -6,7 +6,7 @@
   
 <page title="The Hotels">
 	<c:if test="${not empty user }">
-		<logged-in-header/>
+		<logged-in-header username="${user.name}"/>
 	</c:if>
 	<c:if test="${empty user }">
 		<header/>

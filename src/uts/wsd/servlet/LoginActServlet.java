@@ -1,41 +1,25 @@
 package uts.wsd.servlet;
 
+import uts.wsd.domain.Author;
+import uts.wsd.facade.*;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uts.wsd.domain.*;
-import uts.wsd.facade.*;
 
-public class ReviewDetailServlet extends HttpServlet {
+import org.eclipse.persistence.jpa.jpql.ResultQuery;
+
+public class LoginActServlet extends HttpServlet {
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		try{
-			Integer id = Integer.parseInt(req.getParameter("id"));
-
-			Service service = new Service();
-			Review review = service.getReviewById(id.intValue());
-			if (review != null){
-				req.setAttribute("review", review);
-				req.setAttribute("author", service.getAuthorById(review.getAuthorId()));
-				req.getRequestDispatcher("WEB-INF/pages/review.jsp").forward(req, resp);
-			}
-			else{
-				String msg = "Review Not Found!";
-				resp.sendRedirect("error.jsp?msg=" + msg);
-			}
-		}
-		catch(NumberFormatException e){
-			String msg = "Please send a paramter id!";
-			resp.sendRedirect("error.jsp?msg=" + msg);
-		}
+		// TODO Auto-generated method stub
+		super.doGet(req, resp);
 	}
 
 	/* (non-Javadoc)
@@ -43,7 +27,20 @@ public class ReviewDetailServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doPost(req, resp);
+		// TODO Auto-generated method stub
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		
+		Service service = new Service();
+		Author user = service.getAuthorByCombination(username,password);
+		if (user != null){
+			req.getSession().setAttribute("user", user);
+			resp.sendRedirect("index.jsp");
+		}
+		else {
+			String msg = "Incorrect input of username or password. Please try again";
+			resp.sendRedirect("login.jsp?msg=" + msg);
+		}
 	}
 
 	

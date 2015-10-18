@@ -18,23 +18,31 @@ public class HotelDetailServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// super.doGet(req, resp);
 		try{
-		Integer id = Integer.parseInt(req.getParameter("id"));
-		Service service = new Service();
-		Hotel hotel = service.getHotelById(id.intValue());
+			
+			Integer id = Integer.parseInt(req.getParameter("id"));
+			Service service = new Service();
+			Hotel hotel = service.getHotelById(id.intValue());
 
-		if (hotel != null){
-			req.setAttribute("hotel", service.getHotelById(id));
-			req.setAttribute("reviews", service.getReviewsByHotelId(id));
-			req.getRequestDispatcher("WEB-INF/pages/hotel.jsp").forward(req, resp);
-		}
-		else {
-			String msg = "Hotel Not Found!";
-			resp.sendRedirect("/error.jsp?msg=" + msg);
-		}
+			if (hotel != null){
+				// Get sent back message from post review form
+				String msg = req.getParameter("msg");
+				req.setAttribute("msg", msg);
+				
+				// Retrieve Hotel Detail data
+				req.setAttribute("hotel", service.getHotelById(id));
+				req.setAttribute("reviews", service.getReviewsByHotelId(id));
+				req.getRequestDispatcher("WEB-INF/pages/hotel.jsp").forward(req, resp);
+			}
+			else {
+				// Hotel Not Found
+				String msg = "Hotel Not Found!";
+				resp.sendRedirect("error.jsp?msg=" + msg);
+			}
 		}
 		catch(NumberFormatException e){
+			// Handle no parameter id is sent
 			String msg = "Please send a paramter id!";
-			resp.sendRedirect("/error.jsp?msg=" + msg);
+			resp.sendRedirect("error.jsp?msg=" + msg);
 		}
 	}
 
