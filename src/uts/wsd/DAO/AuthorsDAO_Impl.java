@@ -94,7 +94,6 @@ public class AuthorsDAO_Impl implements AuthorsDAO {
 		}
 		catch (IOException e) {
 			e.printStackTrace();
-			// TODO: handle exception
 		}
 	}
 	

@@ -44,7 +44,6 @@ public class ReviewService {
 			Service service = (Service)application.getAttribute("service");
 			if (service == null){
 				service = new Service();
-				service.setReviewsFilePath(application.getRealPath("WEB-INF/db/reviews.xml"));
 				application.setAttribute("service", service);
 			}
 			return service;

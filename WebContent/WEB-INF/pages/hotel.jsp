@@ -15,10 +15,10 @@
 		<hotel-detail id="${hotel.id}" name="${hotel.name}" city="${hotel.city}" country="${hotel.country}" address="${hotel.address}" email="${hotel.email}" telephone="${hotel.telephone}"></hotel-detail>
 		<review-list>
 			<c:forEach var="review" items="${reviews }">
-			<review id="${review.id}" headline="${review.headline}" rating="${review.rating}" date="${review.date}"></review>
+				<review id="${review.id}" headline="${review.headline}" rating="${review.rating}" date="${review.date}"></review>
 			</c:forEach>
 		</review-list>
-		<post-form hotel-id="${hotel.id}" msg="${msg}"></post-form>
+		<post-form hotel-id="${hotel.id}" msg="${msg}" success="${success}"></post-form>
 	</c:if>
 		
 	<footer/>

@@ -35,11 +35,15 @@ public class PostActServlet extends HttpServlet {
 				String description = req.getParameter("description");
 				int rating = Integer.parseInt(req.getParameter("rating"));
 
-
-				Review review = new Review(0, hotelId, user.getId(), rating, new Date(), headline, description);
-				Service service = new Service();
-				service.addReview(review);
-				resp.sendRedirect("hotel.jsp?id=" + hotelId + "&success=Successfully posted review!");
+				if (!headline.equals("") && !description.equals("")){
+					Review review = new Review(0, hotelId, user.getId(), rating, new Date(), headline, description);
+					Service service = new Service();
+					service.addReview(review);
+					resp.sendRedirect("hotel.jsp?id=" + hotelId + "&success=Successfully posted review!");
+				}
+				else {
+					resp.sendRedirect("hotel.jsp?id=" + hotelId +"&msg=Please write something, mate. I don't like blank reviews");
+				}
 			}
 			else {
 				resp.sendRedirect("hotel.jsp?id=" + hotelId +"&msg=Please Login to post a review.");

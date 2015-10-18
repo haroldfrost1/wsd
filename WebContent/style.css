@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+.nav{
+	clear:both;
+	text-align: center;
+}
+
+.nav > li{
+	display: inline;
+	list-style-type: none;
+	margin: 5;
+	padding: 5;
+}
+
+.nav > a{
+	display:block;
+	width:60px;
+}
+
+.footer{
+	clear:both;
+	text-align: center;
+}
+
+body{
+	min-width: 540px;
+}
+
+.hotels{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 25%;
+	padding-right: 30%;
+}
+
+.reviews{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 25%;
+	padding-right: 10%;	
+}
+
+.post-form{
+	padding-top: 0px;
+	padding-bottom: 15px;
+	padding-left: 25%;
+	padding-right: 10%;	
+}
+
+table{
+	border-spacing: 20px;
+}
+
+h2{
+	text-align: center;
+}

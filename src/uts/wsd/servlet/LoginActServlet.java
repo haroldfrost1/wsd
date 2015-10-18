@@ -28,15 +28,20 @@ public class LoginActServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		
-		Service service = new Service();
-		Author user = service.getAuthorByCombination(username,password);
-		if (user != null){
-			req.getSession().setAttribute("user", user);
-			resp.sendRedirect("index.jsp");
+		if (!username.equals("")&&!password.equals("")){
+			Service service = new Service();
+			Author user = service.getAuthorByCombination(username,password);
+			if (user != null){
+				req.getSession().setAttribute("user", user);
+				resp.sendRedirect("index.jsp");
+			}
+			else {
+				String msg = "Incorrect input of username or password. Please try again";
+				resp.sendRedirect("login.jsp?msg=" + msg);
+			}
 		}
-		else {
-			String msg = "Incorrect input of username or password. Please try again";
+		else{
+			String msg = "Please type your name and password, mate.";
 			resp.sendRedirect("login.jsp?msg=" + msg);
 		}
 	}

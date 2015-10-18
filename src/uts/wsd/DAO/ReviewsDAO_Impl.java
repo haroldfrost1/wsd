@@ -19,7 +19,7 @@ public class ReviewsDAO_Impl implements ReviewsDAO{
 				
 				//initializing
 				this.reviews = new Reviews();			
-				this.setFilePath(this.getClass().getClassLoader().getResource("reviews.xml").getPath());
+				this.setFilePath(this.getClass().getClassLoader().getResource("reviews.xml").getPath());				
 	}
 	
 	
@@ -50,7 +50,7 @@ public class ReviewsDAO_Impl implements ReviewsDAO{
 		ArrayList<Review> result = new ArrayList<Review>();
 		
 		for (Review review : getReviews()){
-			if (review.getId() == hotelId){
+			if (review.getHotelId() == hotelId){
 				result.add(review);
 			}
 		}

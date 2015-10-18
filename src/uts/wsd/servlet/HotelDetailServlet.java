@@ -19,18 +19,21 @@ public class HotelDetailServlet extends HttpServlet{
 		// super.doGet(req, resp);
 		try{
 			
-			Integer id = Integer.parseInt(req.getParameter("id"));
+			int id = Integer.parseInt(req.getParameter("id"));
 			Service service = new Service();
-			Hotel hotel = service.getHotelById(id.intValue());
+			Hotel hotel = service.getHotelById(id);
 
 			if (hotel != null){
 				// Get sent back message from post review form
 				String msg = req.getParameter("msg");
+				String success = req.getParameter("success");
+				req.setAttribute("success", success);
 				req.setAttribute("msg", msg);
 				
 				// Retrieve Hotel Detail data
 				req.setAttribute("hotel", service.getHotelById(id));
-				req.setAttribute("reviews", service.getReviewsByHotelId(id));
+				
+				req.setAttribute("reviews", service.getReviewsByHotelId(hotel.getId()));
 				req.getRequestDispatcher("WEB-INF/pages/hotel.jsp").forward(req, resp);
 			}
 			else {

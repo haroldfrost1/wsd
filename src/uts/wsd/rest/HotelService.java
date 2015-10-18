@@ -40,7 +40,6 @@ public class HotelService {
 			Service service = (Service)application.getAttribute("service");
 			if (service == null){
 				service = new Service();
-				service.setHotelsFilePath(application.getRealPath("WEB-INF/db/hotels.xml"));
 				application.setAttribute("service", service);
 			}
 			return service;
