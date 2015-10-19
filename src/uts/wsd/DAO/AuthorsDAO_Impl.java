@@ -8,6 +8,7 @@ import javax.xml.bind.*;
 
 import uts.wsd.domain.Author;
 import uts.wsd.domain.Authors;
+import uts.wsd.domain.Review;
 
 public class AuthorsDAO_Impl implements AuthorsDAO {
 
@@ -57,18 +58,21 @@ public class AuthorsDAO_Impl implements AuthorsDAO {
 	}
 			
 	@Override
-	public void save(){
+	public boolean saved(){
 		try{
 			JAXBContext jc = JAXBContext.newInstance(Authors.class);
 			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			m.marshal(authors, new FileOutputStream(filePath));
+			return true;
 		}
 		catch (JAXBException e) {
 			e.printStackTrace();
+			return false;
 		}	
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -97,17 +101,38 @@ public class AuthorsDAO_Impl implements AuthorsDAO {
 		}
 	}
 	
-//	We don't need this function yet 
-//	
-//	public void addAuthor(Author author){
-//		
-//		readAuthors();
-//		
-//		// Setting author id with current largest id +1
-//		author.setId(authors.getLargestId() + 1);
-//		
-//		//add & save
-//		authors.addAuthor(author);
-//		save();
-//	}
+	@Override
+	public int getLargestId(){
+		//loop through the list &
+		//Update the largest id
+		int largestId = 0;
+		for (Author a : getAuthors()){
+			if(largestId < a.getId()){
+				largestId = a.getId();
+			}
+		}
+		return largestId;
+	}
+	
+	public boolean addAuthor(Author author){
+		// Setting author id with current largest id +1
+		author.setId(authors.getLargestId() + 1);
+		
+		//add & save
+		authors.addAuthor(author);
+		if (saved()){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public Author getAuthorByName(String name) {
+		for (Author author : getAuthors()){
+			if (author.getName().equals(name)){
+				return author;
+			}
+		}
+		return null;
+	}
 }

@@ -47,7 +47,14 @@ public class Service {
 	public ArrayList<Hotel> getHotels() {
 		return hotelsDAO.getHotels();
 	}
+	
+	public Hotel getHotelByName(String hotelname) {
+		return hotelsDAO.getHotelByName(hotelname);
+	}
 
+	public boolean addHotel(Hotel hotel) {
+		return hotelsDAO.addHotel(hotel);
+	}
 	/*******************
 	 * ReviewsDAO methods
 	 ********************/
@@ -93,6 +100,19 @@ public class Service {
 	public Author getAuthorByCombination(String username, String password) {
 		return authorsDAO.getAuthor(username, password);
 	}
+
+	public boolean registerAuthor(Author author) {
+		return authorsDAO.addAuthor(author);
+		
+	}
+
+	public Author getAuthorByName(String username) {
+		return authorsDAO.getAuthorByName(username);
+	}
+
+	
+
+	
 
 	
 

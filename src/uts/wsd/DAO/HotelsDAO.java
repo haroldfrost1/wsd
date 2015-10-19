@@ -32,7 +32,10 @@ public interface HotelsDAO{
 	/**************************
 	 * Load and save methods
 	 **************************/
-	public void save();
+	public boolean saved();
 	public void readHotels();
+	public Hotel getHotelByName(String hotelname);
+	public boolean addHotel(Hotel hotel);
+	int getLargestId();
 
 }

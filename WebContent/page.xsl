@@ -31,6 +31,9 @@
 				<li><a href="index.jsp">Home</a></li>
 				<li><span>Welcome back! <xsl:value-of select="@username"/>.</span></li>
 				<li><a href="myReviews.jsp">My Reviews</a></li>
+				<xsl:if test="@admin = 1">
+				<li><a href="addHotel.jsp">Manage Hotels</a></li>
+				</xsl:if>
 				<li><a href="logout.jsp">Logout</a></li>
 			</ul>
 		</div>
@@ -224,5 +227,36 @@
 		<div style="text-align: center; padding-bottom:10px;" ><a href="index.jsp">Back to main page</a></div>
 	</xsl:template>
 		
+	
+	<xsl:template match="register-form">
+	<h2>Register Form</h2>
+	<div style="text-align:center; color:red;"><span><xsl:value-of select="@msg"/></span></div>
+	<form method="post" action="registerAct.jsp">
+		<table class="hotels">
+			<tr><td>Username: </td><td><input type="text" name="username"/></td></tr>
+			<tr><td>Password: </td><td><input type="password" name="password"/></td></tr>
+			<tr><td>Email: </td><td><input type="email" name="email"/></td></tr>
+			<tr><td></td><td><input type="submit" value="submit">Submit</input></td></tr>
+		</table>
+	</form>
+	<div style="text-align: center; padding-bottom:10px;" ><a href="index.jsp">Back to main page</a></div>
+	</xsl:template>
+	
+	<xsl:template match="add-hotel-form">
+		<h2>New Hotel Form</h2>
+	<div style="text-align:center; color:red;"><span><xsl:value-of select="@msg"/></span></div>
+	<form method="post" action="addHotelAct.jsp">
+		<table class="hotels">
+			<tr><td>Hotel Name: </td><td><input type="text" name="name"/></td></tr>
+			<tr><td>City: </td><td><input type="text" name="city"/></td></tr>
+			<tr><td>Country: </td><td><input type="text" name="country"/></td></tr>
+			<tr><td>Address: </td><td><input type="text" name="address"/></td></tr>
+			<tr><td>Email: </td><td><input type="email" name="email"/></td></tr>
+			<tr><td>Telephone: </td><td><input type="telephone" name="telephone"/></td></tr>
+			<tr><td></td><td><input type="submit" value="submit">Submit</input></td></tr>
+		</table>
+	</form>
+	<div style="text-align: center; padding-bottom:10px;" ><a href="index.jsp">Back to main page</a></div>
+	</xsl:template>
 	
 </xsl:stylesheet>

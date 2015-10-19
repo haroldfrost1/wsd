@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.xml.bind.*;
 import java.io.*;
 
+import uts.wsd.domain.Author;
 import uts.wsd.domain.Hotel;
 import uts.wsd.domain.Hotels;
 
@@ -50,18 +51,21 @@ public class HotelsDAO_Impl implements HotelsDAO{
 	}
 
 	@Override
-	public void save(){
+	public boolean saved(){
 		try{
 			JAXBContext jc = JAXBContext.newInstance(Hotels.class);
 			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			m.marshal(hotels, new FileOutputStream(filePath));
+			return true;
 		}
 		catch (JAXBException e) {
 			e.printStackTrace();
+			return false;
 		}	
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -88,5 +92,38 @@ public class HotelsDAO_Impl implements HotelsDAO{
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Hotel getHotelByName(String hotelname) {
+		for (Hotel hotel: getHotels()){
+			if (hotel.getName().equals(hotelname))
+				return hotel;
+		}
+		return null;
+	}
+	
+	@Override
+	public int getLargestId(){
+		//loop through the list &
+		//Update the largest id
+		int largestId = 0;
+		for (Hotel hotel : getHotels()){
+			if(largestId < hotel.getId()){
+				largestId = hotel.getId();
+			}
+		}
+		return largestId;
+	}
+
+	@Override
+	public boolean addHotel(Hotel hotel) {
+		hotel.setId(getLargestId() +1);
+		
+		hotels.addHotel(hotel);
+		if (saved()){
+			return true;
+		}
+		return false;
 	}
 }

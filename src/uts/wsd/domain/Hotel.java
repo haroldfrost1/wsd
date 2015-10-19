@@ -28,6 +28,17 @@ public class Hotel implements Serializable{
 		this.email = null;
 	}
 
+	public Hotel(int id, String hotelname, String city, String country, String address, String email,
+			String telephone) {
+		this.id = id;
+		this.name = hotelname;
+		this.city = city;
+		this.country = country;
+		this.email = email;
+		this.address = address;
+		this.telephone = telephone;
+	}
+
 	@XmlElement
 	public int getId() {
 		return id;

@@ -25,14 +25,6 @@ public class Authors implements Serializable {
 	
 	public void addAuthor(Author author){
 		authors.add(author);
-		
-		//loop through the list &
-		//Update the largest id
-		for (Author a : authors){
-			if(largestId < a.getId()){
-				largestId = a.getId();
-			}
-		}
 	}
 
 	public Authors() {

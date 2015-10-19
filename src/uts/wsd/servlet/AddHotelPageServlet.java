@@ -1,36 +1,24 @@
 package uts.wsd.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uts.wsd.facade.*;
-import uts.wsd.domain.*;
 
-public class HotelsServlet extends HttpServlet {
+public class AddHotelPageServlet extends HttpServlet{
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 *  Main page. Retrieve Hotel Data
 	 */
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		// super.doGet(req, resp);
-		req.setAttribute("admin", 0);
-		Service service = new Service();
-		Author user = (Author)req.getSession().getAttribute("user");
-		if (user != null){
-			if (user.getName().equals("admin")){
-				req.setAttribute("admin", 1);
-			}
-		}
-		req.setAttribute("hotels", service.getHotels());
-		req.getRequestDispatcher("WEB-INF/pages/index.jsp").forward(req, resp);
+		req.setAttribute("msg", req.getParameter("msg"));
+		
+		
+		
+		req.getRequestDispatcher("WEB-INF/pages/addhotel.jsp").forward(req, resp);
 	}
 
 	/* (non-Javadoc)
@@ -38,8 +26,8 @@ public class HotelsServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
-	
+
 }

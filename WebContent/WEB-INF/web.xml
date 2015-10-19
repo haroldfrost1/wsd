@@ -149,4 +149,49 @@
     <url-pattern>/deleteAct.jsp</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description></description>
+    <display-name>Register Page</display-name>
+    <servlet-name>Register Page Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.RegisterPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register Page Servlet</servlet-name>
+    <url-pattern>/register.jsp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>Register Act</display-name>
+    <servlet-name>Register Act Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.RegisterActServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register Act Servlet</servlet-name>
+    <url-pattern>/registerAct.jsp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>Add Hotel Page</display-name>
+    <servlet-name>Add Hotel Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.AddHotelPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Add Hotel Servlet</servlet-name>
+    <url-pattern>/addHotel.jsp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>Add Hotel Act</display-name>
+    <servlet-name>Add Hotel Act Servlet</servlet-name>
+    <servlet-class>uts.wsd.servlet.AddHotelActServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Add Hotel Act Servlet</servlet-name>
+    <url-pattern>/addHotelAct.jsp</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

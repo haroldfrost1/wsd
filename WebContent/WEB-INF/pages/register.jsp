@@ -6,18 +6,13 @@
   
 <page title="The Hotels">
 	<c:if test="${not empty user }">
-		<logged-in-header username="${user.name}" admin="${admin}"/>
+		<logged-in-header username="${user.name}"/>
 	</c:if>
 	<c:if test="${empty user }">
 		<header/>
 	</c:if>
 	
-	<c:if test="${hotels != null}">
-	<hotel-list>
-		<c:forEach var="hotel" items="${hotels}">
-			<hotel id="${hotel.id}" name="${hotel.name}" city="${hotel.city}" country="${hotel.country}"></hotel>
-		</c:forEach>
-	</hotel-list>
-	</c:if>
+	<register-form msg="${msg}"/>
+	
 	<footer/>
 </page>

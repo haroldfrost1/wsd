@@ -38,12 +38,17 @@ public interface AuthorsDAO{
 	 * @return an Author matches the combination
 	 */
 	public Author getAuthor(String name, String password);
+	public Author getAuthorByName(String name);
 			
 	/**************************
 	 * Load and save methods
 	 **************************/
-	public void save();
+	public boolean saved();
 	public void readAuthors();
+
+	int getLargestId();
+
+	public boolean addAuthor(Author author);
 	
 
 }
