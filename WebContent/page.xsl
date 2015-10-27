@@ -259,4 +259,15 @@
 	<div style="text-align: center; padding-bottom:10px;" ><a href="index.jsp">Back to main page</a></div>
 	</xsl:template>
 	
+	<xsl:template match="error-message">
+	<div style="text-align:center; margin: 20px;">
+		<span>
+			<xsl:value-of select="@msg" />
+		</span>
+	</div>
+	<div style="text-align: center; padding-bottom:10px;">
+		<a href="index.jsp">Back to main page</a>
+	</div>
+</xsl:template>
+	
 </xsl:stylesheet>

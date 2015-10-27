@@ -22,14 +22,24 @@ public class HotelsServlet extends HttpServlet {
 
 		// super.doGet(req, resp);
 		req.setAttribute("admin", 0);
+		
+		
 		Service service = new Service();
+		
+		// Getting logged in user
 		Author user = (Author)req.getSession().getAttribute("user");
+		
+		// Check if he is the admin
 		if (user != null){
 			if (user.getName().equals("admin")){
 				req.setAttribute("admin", 1);
 			}
 		}
+		
+		// set attribute
 		req.setAttribute("hotels", service.getHotels());
+		
+		// forward the data to the page
 		req.getRequestDispatcher("WEB-INF/pages/index.jsp").forward(req, resp);
 	}
 

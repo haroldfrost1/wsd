@@ -39,8 +39,6 @@ public class ReviewsSOAP {
 					Service service = (Service)application.getAttribute("service");
 					if (service == null){
 						service = new Service();
-						service.setReviewsFilePath(application.getRealPath("WEB-INF/db/reviews.xml"));
-						service.setAuthorsFilePath(application.getRealPath("WEB-INF/db/authors.xml"));
 						application.setAttribute("service", service);
 					}
 					return service;

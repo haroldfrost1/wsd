@@ -22,20 +22,20 @@ public class Service {
 		this.reviewsDAO = new ReviewsDAO_Impl();
 	}
 	
-	/*******************
-	 * File Path setters
-	 ********************/
-	public void setHotelsFilePath(String filePath){
-		this.hotelsDAO.setFilePath(filePath);
-	}
-	
-	public void setReviewsFilePath(String filePath){
-		this.reviewsDAO.setFilePath(filePath);
-	}
-	
-	public void setAuthorsFilePath(String filePath){
-		this.authorsDAO.setFilePath(filePath);
-	}
+//	/*******************
+//	 * File Path setters
+//	 ********************/
+//	public void setHotelsFilePath(String filePath){
+//		this.hotelsDAO.setFilePath(filePath);
+//	}
+//	
+//	public void setReviewsFilePath(String filePath){
+//		this.reviewsDAO.setFilePath(filePath);
+//	}
+//	
+//	public void setAuthorsFilePath(String filePath){
+//		this.authorsDAO.setFilePath(filePath);
+//	}
 
 	/*******************
 	 * HotelsDAO methods

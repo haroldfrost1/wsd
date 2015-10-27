@@ -4,6 +4,8 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   
+
+  
 <page title="The Hotels">
 	<c:if test="${not empty user }">
 		<logged-in-header username="${user.name}" admin="${admin}"/>
@@ -19,5 +21,6 @@
 		</c:forEach>
 	</hotel-list>
 	</c:if>
+	
 	<footer/>
 </page>

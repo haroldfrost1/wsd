@@ -13,6 +13,7 @@ public class ReviewsSOAPClient {
 		//reviewsSOAP.deleteReview(3);
 		reviewsSOAP.login("kate", "kate");
 		reviewsSOAP.postReview("Testing facade", "How facade works", 2, 2);
-		reviewsSOAP.deleteReview(3);
+		reviewsSOAP.deleteReview(1);
+		
 	}
 }
